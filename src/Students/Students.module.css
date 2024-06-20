@@ -1,0 +1,19 @@
+.students {
+  height: 90vh;
+  margin: 0 40px;
+
+  background-color: rgb(157, 202, 246);
+}
+
+.studentsTable th,
+.studentsTable td {
+  padding: 10px;
+  text-align: center;
+}
+.studentsTable th {
+  background-color: #f2f2f2;
+}
+
+.studentsTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

@@ -1,0 +1,11 @@
+.teachers{
+
+    background-color: aquamarine;
+}
+
+.teacherHeader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 100px;
+}
