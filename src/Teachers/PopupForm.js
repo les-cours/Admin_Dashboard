@@ -15,7 +15,7 @@ function PopupForm() {
   const [secondSelectionDisabled, setSecondSelectionDisabled] = useState(true);
   const [schoolId, setSchoolId] = useState("school");
   const [selectedSubjects, setSelectedSubjects] = useState([]);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("bilal.abbas@univ-constantine2.dz");
 
   const [inviteTeacher, { data, loading, error }] = useMutation(InviteTeachers);
 
@@ -92,7 +92,7 @@ function PopupForm() {
                   </option>
                   <option value="1">الابتدائي</option>
                   <option value="2">المتوسط</option>
-                  <option value="3">الثانوي</option>
+                  <option value="3" selected>الثانوي</option>
                 </select>
               </div>
               <div className="modal-item">
