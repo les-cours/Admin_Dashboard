@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useMutation } from "@apollo/client";
 import Popup from "reactjs-popup";
 import SelectCities from "./selectCities";
-import { InviteTeachers } from '../GraphQl/Mutations';
+import { InviteTeachers } from "../GraphQl/Mutations";
 import "./popup.css";
 
 function PopupForm() {
@@ -46,7 +46,7 @@ function PopupForm() {
   };
 
   const handleSubmit = async () => {
-    const subjects = selectedSubjects.map(subject => subject.value);
+    const subjects = selectedSubjects.map((subject) => subject.value);
     try {
       const { data } = await inviteTeacher({
         variables: {
@@ -65,7 +65,8 @@ function PopupForm() {
   };
 
   return (
-    <Popup
+    <>
+        <Popup
       className="popup"
       trigger={<button style={{ position: "relative" }}>اضافة أستاد +</button>}
       modal
@@ -73,61 +74,56 @@ function PopupForm() {
     >
       {(close) => (
         <div className="modal">
-        <div>
-        <h2>طلب الانظمام من أستاد</h2>
+          <div>
+            <h2>طلب الانظمام من أستاد</h2>
+            <div>
+              <select onChange={handleFirstSelect} name={"phase"}>
+                <option selected disabled value="">
+                  اختر الطور
+                </option>
+                <option value="1">الابتدائي</option>
+                <option value="2">المتوسط</option>
+                <option value="3">الثانوي</option>
+              </select>
+            </div>
+            <div className="modal-item">
+              <SelectCities
+                secondSelectionDisabled={secondSelectionDisabled}
+                schoolId={schoolId}
+                onSelectedSubjectsChange={handleSelectedSubjectsChange}
+              />
+            </div>
+            <div>
               <div>
-                <select onChange={handleFirstSelect} name={"phase"}>
-                  <option selected disabled value="">
-                    اختر الطور
-                  </option>
-                  <option value="1">الابتدائي</option>
-                  <option value="2">المتوسط</option>
-                  <option value="3">الثانوي</option>
-                </select>
+                <label htmlFor="email">البريد الالكتروني</label>
               </div>
-              <div className="modal-item">
-                <SelectCities
-                  secondSelectionDisabled={secondSelectionDisabled}
-                  schoolId={schoolId}
-                  onSelectedSubjectsChange={handleSelectedSubjectsChange}
-                />
-              </div>
-              <div>
-                <div>
-                  <label htmlFor="email">البريد الالكتروني</label>
-                </div>
-                <input
-                  placeholder="chouaibe@gmail.com"
-                  type="email"
-                  id="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                />
-              </div>
-              <div className="buttonDiv">
+              <input
+                placeholder="chouaibe@gmail.com"
+                type="email"
+                id="email"
+                value={email}
+                onChange={handleEmailChange}
+              />
+            </div>
+            <div className="buttonDiv">
               <button
-              
-                  onClick={async () => {
-                    await handleSubmit();
-                    close();
-                  }}
-                >
-                  ارسال
-                </button>
+                onClick={async () => {
+                  await handleSubmit();
+                  close();
+                }}
+              >
+                ارسال
+              </button>
 
-
-                <button
-                
-                  onClick={() => close()}
-                >
-                  الغاء
-                </button>
-           
-              </div>
-        </div>
+              <button onClick={() => close()}>الغاء</button>
+            </div>
           </div>
+        </div>
       )}
     </Popup>
+    
+    </>
+
   );
 }
 

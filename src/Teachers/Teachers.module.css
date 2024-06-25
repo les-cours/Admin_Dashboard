@@ -1,11 +1,26 @@
-.teachers{
-
-    background-color: aquamarine;
+.teachers {
+  padding: 24px 12px;
 }
 
-.teacherHeader{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 0 100px;
+.teacherHeader {
+}
+.teacherHeader h2 {
+  font-weight: 700;
+  color: var(--text-color);
+}
+.teacherHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 100px;
+}
+
+.teacherHeader button {
+  padding: 12px 24px;
+  border: none;
+  background-color: var(--primary-color);
+  color: var(--text-color-light);
+  font-weight: 700;
+  cursor: pointer;
+  border-radius: 6px;
 }
