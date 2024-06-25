@@ -1,25 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   direction: rtl;
-  box-sizing: border-box;
+  font-family: "Cairo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  direction: rtl;
+  font-family: "Cairo", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings: "slnt" 0;
+}
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-
 :root {
-  --primary-color: #a435f0;
-  --primary-color-dark: #692199;
-  --secondary-color: #ffc107;
-  --secondary-color-dark: rgb(204, 143, 30);
+  
+  --primary-color: #001DBC;
+  --primary-color-dark: #001796;
+  --secondary-color: #ff8b26;
+  --secondary-color-dark: #cc6f1e;
 
   --third-color-dark: #0d1b2a;
   --third-color: #1b263b;
@@ -33,4 +48,5 @@ code {
   --backend-color-side-hover: #ececec;
   --text-color: #212529;
   --text-color-light: #fff;
+  /* Add more color variables as needed */
 }

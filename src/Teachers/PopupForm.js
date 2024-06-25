@@ -73,9 +73,8 @@ function PopupForm() {
     >
       {(close) => (
         <div className="modal">
-          <div className="contentPop">
-            <div>
-              <h2>طلب الانظمام من أستاد</h2>
+        <div>
+        <h2>طلب الانظمام من أستاد</h2>
               <div>
                 <select onChange={handleFirstSelect} name={"phase"}>
                   <option selected disabled value="">
@@ -86,7 +85,7 @@ function PopupForm() {
                   <option value="3">الثانوي</option>
                 </select>
               </div>
-              <div>
+              <div className="modal-item">
                 <SelectCities
                   secondSelectionDisabled={secondSelectionDisabled}
                   schoolId={schoolId}
@@ -98,6 +97,7 @@ function PopupForm() {
                   <label htmlFor="email">البريد الالكتروني</label>
                 </div>
                 <input
+                  placeholder="chouaibe@gmail.com"
                   type="email"
                   id="email"
                   value={email}
@@ -105,14 +105,8 @@ function PopupForm() {
                 />
               </div>
               <div className="buttonDiv">
-                <button
-                  style={{ backgroundColor: "#ff4646" }}
-                  onClick={() => close()}
-                >
-                  الغاء
-                </button>
-                <button
-                  style={{ backgroundColor: "#41d06c" }}
+              <button
+              
                   onClick={async () => {
                     await handleSubmit();
                     close();
@@ -120,10 +114,18 @@ function PopupForm() {
                 >
                   ارسال
                 </button>
+
+
+                <button
+                
+                  onClick={() => close()}
+                >
+                  الغاء
+                </button>
+           
               </div>
-            </div>
-          </div>
         </div>
+          </div>
       )}
     </Popup>
   );
