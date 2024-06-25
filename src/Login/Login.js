@@ -15,7 +15,7 @@ function Login({setConnected}) {
     console.log(username, password, osname, error);
     try {
       const response = await axios.post(
-        "http://127.0.0.1:3004/admin-login",
+        "http://127.0.0.1:3004/login-admin",
         {
           username,
           password,
