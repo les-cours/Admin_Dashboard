@@ -1,24 +1,63 @@
 import React, { useState } from "react";
 import styles from "./Login.module.css";
-
-function Login() {
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
+function Login({setConnected}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
+  const [osname, setOsname] = useState("ubuntu");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    console.log(username, password, osname, error);
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:3004/admin-login",
+        {
+          username,
+          password,
+          osname,
+        }
+      );
 
-    // Perform your login logic here, for example:
-    if (username === "validUsername" && password === "validPassword") {
-      // Successful login logic (e.g., redirect user)
-      console.log("Login successful");
-    } else {
-      // Handle incorrect credentials
-      setError(true);
+      console.log(response.data.user);
+
+      //  if (!response.data || typeof response.data.user.accessToken !== "string") {
+      //  throw new Error("Invalid or missing access token in the response.");
+      //}
+
+      const decodedToken = jwtDecode(response.data.user.accessToken);
+
+      const userInfo = {
+        id: decodedToken.id,
+        userType: decodedToken.userType,
+        username: decodedToken.username,
+        firstname: decodedToken.firstname,
+        lastname: decodedToken.lastname,
+        email: decodedToken.email,
+        avatar: decodedToken.avatar,
+      };
+
+
+      localStorage.setItem("token", response.data.user.accessToken);
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+      setConnected(true);
+
+      navigate("/home", { replace: true });
+    } catch (error) {
+      console.error("Error logging in:", error.message);
+      setError(error.message);
     }
   };
 
+  const [isVisible, setIsVisible] = useState(false);
+
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
   return (
     <div className={styles.container}>
       <div className={styles.text}>تسجيل الدخول</div>
