@@ -3,9 +3,11 @@ import { useQuery } from "@apollo/client";
 import { LoadSubjects } from "../GraphQl/Queries";
 import Select from "react-select";
 
-
-export default function SelectCities({ secondSelectionDisabled, schoolId ,onSelectedSubjectsChange}) {
-
+export default function SelectCities({
+  secondSelectionDisabled,
+  schoolId,
+  onSelectedSubjectsChange,
+}) {
   console.log(schoolId);
   const { error, loading, data } = useQuery(LoadSubjects, {
     variables: { schoolID: schoolId },
@@ -17,7 +19,7 @@ export default function SelectCities({ secondSelectionDisabled, schoolId ,onSele
     if (data && data.school) {
       const groupedSubjects = data.school.flatMap((school) =>
         school.grades.map((grade) => ({
-          label: grade.arabicTitle, 
+          label: grade.arabicTitle,
           options: grade.subjects.map((subject) => ({
             value: subject.subjectID,
             label: subject.arabicTitle,
@@ -28,9 +30,7 @@ export default function SelectCities({ secondSelectionDisabled, schoolId ,onSele
     }
   }, [data]);
 
-
   const handleChange = (selectedOptions) => {
-    
     setSelectedSubjects(selectedOptions);
     onSelectedSubjectsChange(selectedOptions);
   };
@@ -42,6 +42,7 @@ export default function SelectCities({ secondSelectionDisabled, schoolId ,onSele
   return (
     <div>
       <Select
+        required
         placeholder={<div>اختر المادة</div>}
         isSearchable={true}
         options={subjects}
@@ -52,7 +53,7 @@ export default function SelectCities({ secondSelectionDisabled, schoolId ,onSele
         styles={{
           container: (provided) => ({
             ...provided,
-            maxWidth: '250px', 
+            maxWidth: "250px",
           }),
         }}
       />

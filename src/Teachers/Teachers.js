@@ -7,7 +7,9 @@ function Teachers() {
     <div className={styles.teachers}>
       <div className={styles.teacherHeader}>
         <h2>قائمة الأساتدة</h2>
-        <PopupForm />
+        <div>
+          <PopupForm />
+        </div>
       </div>
     </div>
   );
