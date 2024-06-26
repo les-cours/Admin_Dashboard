@@ -3,7 +3,7 @@ import styles from "./Login.module.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-function Login({setConnected}) {
+function Login({ setConnected }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [osname, setOsname] = useState("ubuntu");
@@ -15,7 +15,7 @@ function Login({setConnected}) {
     console.log(username, password, osname, error);
     try {
       const response = await axios.post(
-        "http://127.0.0.1:3004/login-admin",
+        "http://192.168.175.166:3004/login-admin",
         {
           username,
           password,
@@ -41,12 +41,11 @@ function Login({setConnected}) {
         avatar: decodedToken.avatar,
       };
 
-
       localStorage.setItem("token", response.data.user.accessToken);
       localStorage.setItem("userInfo", JSON.stringify(userInfo));
       setConnected(true);
 
-      navigate("/home", { replace: true });
+      navigate("/teachers", { replace: true });
     } catch (error) {
       console.error("Error logging in:", error.message);
       setError(error.message);
@@ -94,7 +93,6 @@ function Login({setConnected}) {
             البريد الإلكتروني أو كلمة المرور خاطئة
           </p>
         )}
-       
       </form>
     </div>
   );

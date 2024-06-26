@@ -68,15 +68,13 @@ function NavBar({ setConnected }) {
           الأساتذة{" "}
         </Link>
         <Link to="/students" className={styles.link}>
-        التلاميذ{" "}
+          التلاميذ{" "}
         </Link>
 
         <div className={styles.profile} ref={profileRef}>
-          <div
-            className={styles.avatarContainer}
-            dangerouslySetInnerHTML={{ __html: avatar }}
-            onClick={showProfileHandler}
-          />
+          <div className={styles.avatarContainer} onClick={showProfileHandler}>
+            <img src={s} alt="tt" style={{ with: "12px" }} />
+          </div>
           {isProfileInfoVisible && (
             <div className={styles.profileInfo}>
               <button

@@ -115,14 +115,9 @@
   position: absolute;
   left: -100%;
   z-index: -1;
-  background: -webkit-linear-gradient(
-    right,
-    #56d8e4,
-    #9f01ea,
-    #56d8e4,
-    #9f01ea
-  );
+  background: var(--primary-color);
   transition: all 0.4s;
+  font-size: 700;
 }
 
 .btn:hover .inner {

@@ -3,6 +3,7 @@
 }
 
 .teacherHeader {
+  margin-bottom: 50px;
 }
 .teacherHeader h2 {
   font-weight: 700;
@@ -12,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 100px;
+  margin: 0 100px 50px 100px;
     }
 
 .teacherHeader button {
@@ -46,7 +47,7 @@
 }
 
 .table th {
-  background-color: #4CAF50;
+  background-color: var(--primary-color);
   color: white;
 }
 

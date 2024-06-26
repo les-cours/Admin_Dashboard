@@ -27,7 +27,7 @@ const errorLink = onError(({ graphqlErrors, networkError }) => {
 
 const link = from([
   errorLink,
-  new HttpLink({ uri: "http://localhost:9090/graphql" }),
+  new HttpLink({ uri: "http://192.168.175.166:9090/graphql" }),
 ]);
 
 const authLink = setContext((_, { headers }) => {
@@ -58,9 +58,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
-      {connected && (
-          <NavBar setConnected={setConnected} />
-        )}
+        {connected && <NavBar setConnected={setConnected} />}
         <Routes>
           {connected ? (
             <>

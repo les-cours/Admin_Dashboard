@@ -80,6 +80,8 @@ body.dark-mode .navBar a:hover {
 
 .profile {
   position: relative;
+  width: 50px;
+  height: 50px;
 }
 .profileInfo {
   top: 60px;

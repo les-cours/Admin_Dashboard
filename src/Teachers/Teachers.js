@@ -8,17 +8,17 @@ function formatDateOfBirth(dateString) {
   const dateObject = new Date(dateString);
 
   const options = {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
   };
 
-  return dateObject.toLocaleDateString('fr-FR', options); // ajustez 'fr-FR' pour la locale souhaitée
+  return dateObject.toLocaleDateString("fr-FR", options); // ajustez 'fr-FR' pour la locale souhaitée
 }
 
 function Teachers() {
   const { loading, error, data } = useQuery(LoadTeachers);
-  console.log(data)
+  console.log(data);
   if (loading) return <p>جارٍ التحميل...</p>;
   if (error) return <p>حدث خطأ: {error.message}</p>;
   return (
@@ -40,11 +40,10 @@ function Teachers() {
         </thead>
         <tbody>
           {data.getTeachers.map((teacher) => (
-            <tr key={teacher.teacherId}>
+            <tr key={teacher.teacherID}>
               <td className={styles.teacherCell}>
                 <div className={styles.defaultAvatar}>
-                  {teacher.avatar &&
-                  teacher.avatar.includes("<svg") ? (
+                  {teacher.avatar && teacher.avatar.includes("<svg") ? (
                     <div
                       dangerouslySetInnerHTML={{
                         __html: teacher.avatar,
@@ -63,12 +62,10 @@ function Teachers() {
                   </div>
                 </div>
               </td>
-              <td>
-                {teacher.gender =="M"? "ذكر":"أنثى"}
-               </td>
+              <td>{teacher.gender === "M" ? "ذكر" : "أنثى"}</td>
               <td>{formatDateOfBirth(teacher.dateOfBirth)}</td>
               <td>{teacher.cityID}</td>
-            </tr>
+             </tr>
           ))}
         </tbody>
       </table>
